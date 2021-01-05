@@ -1,33 +1,58 @@
 package controller
 
 import (
+	"net/http"
+
+	"gilab.com/saimohanreddyt/gin-gonic/entity"
+	"gilab.com/saimohanreddyt/gin-gonic/service"
+	"gilab.com/saimohanreddyt/gin-gonic/validators"
 	"github.com/gin-gonic/gin"
-	"gitlab.com/saimohanreddyt/golang-gin-poc/entity"
-	)
+	"gopkg.in/go-playground/validator.v9"
+)
 
 type VideoController interface {
-	Findall() []entity.Video
-	Save(ctx *gin.Context) entity.Video
-
+	FindAll() []entity.Video
+	Save(ctx *gin.Context) error
+	ShowAll(ctx *gin.Context)
 }
 
 type controller struct {
 	service service.VideoService
 }
 
+var validate *validator.Validate
+
 func New(service service.VideoService) VideoController {
-	return controller {
+	validate = validator.New()
+	validate.RegisterValidation("is-cool", validators.ValidateCoolTitle)
+	return &controller{
 		service: service,
 	}
 }
 
-func (c *controller) Findall() []entity.Video {
-	return service().FindAll()
-
+func (c *controller) FindAll() []entity.Video {
+	return c.service.FindAll()
 }
-func (c *controller) Save(ctx *gin.Context) entity.Video{
+
+func (c *controller) Save(ctx *gin.Context) error {
 	var video entity.Video
-	ctx.BindJSON(&video)
+	err := ctx.ShouldBindJSON(&video)
+	if err != nil {
+		return err
+	}
+	err = validate.Struct(video)
+	if err != nil {
+		return err
+	}
 	c.service.Save(video)
-	return video
+	return nil
+}
+
+func (c *controller) ShowAll(ctx *gin.Context) {
+	videos := c.service.FindAll()
+	data := gin.H{
+		"title":  "Video Page",
+		"videos": videos,
+	}
+	ctx.HTML(http.StatusOK, "index.html", data)
 }
