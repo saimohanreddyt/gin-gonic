@@ -1,18 +1,22 @@
 package service
 
-import "gitlab.com/saimohanreddyt/golang-gin-poc/entity"
+import (
+	"gilab.com/saimohanreddyt/gin-gonic/entity"
+)
 
 type VideoService interface {
 	Save(entity.Video) entity.Video
-	FinAll() []entity.Video
+	FindAll() []entity.Video
 }
 
 type videoService struct {
 	videos []entity.Video
 }
 
-type New() VideoService{
-	return &videoService{}
+func New() VideoService {
+	return &videoService{
+		videos: []entity.Video{},
+	}
 }
 
 func (service *videoService) Save(video entity.Video) entity.Video {
@@ -20,7 +24,6 @@ func (service *videoService) Save(video entity.Video) entity.Video {
 	return video
 }
 
-func (service *videoService) FinAll() []entity.Video {
-	return services.videos
-
+func (service *videoService) FindAll() []entity.Video {
+	return service.videos
 }
