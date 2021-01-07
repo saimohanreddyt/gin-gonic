@@ -1,0 +1,22 @@
+JSON Web Tokens
+----------------
+.Open Industry Standard RFC 7519
+
+
+.Secure mechanism to transfer claims (user detais/metadata) between two parties.
+
+.The claims are encoded as a JSON onject and digitally signed (the information is verified and trusted)
+
+JSON Web Tokens | Key Characteristics
+--------------------------------------
+.Portable: A single token (issued by the authentication service) can be used with multiple backends / services.
+
+.No session management (100% stateless)
+	-No Database required.
+	-No In-Memory Key/Value store required.
+.It's simpler to use and the development time is faster using the existing JWT libraries.
+
+.JSON Web Token consist of three parts seperated by dots(.)
+	-Header
+	-Payload
+	-Signature
