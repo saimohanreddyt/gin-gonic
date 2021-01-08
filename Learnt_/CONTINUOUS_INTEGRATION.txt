@@ -1,0 +1,11 @@
+
+
+"Continuous integration is a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily - leading to multiple integrations per day. 
+Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible..."
+
+. Continuous Delivery
+	-You are ready and able to deploy any version to any supported platform at any time.
+		(e.g. upload to a Git repo or Container registry)
+. Continuous Deployment
+	-You are able to continuously deploy.
+		(e.g. from a Git repo or Container registry to Production)

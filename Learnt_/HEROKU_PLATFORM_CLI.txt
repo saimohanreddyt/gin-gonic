@@ -1,0 +1,24 @@
+HEROKU PLATFORM
+----------------
+.Heroku is a platform as a service (Paas) created in 2007 that enables developers to buil>
+
+.Heroku focuses relentlessly on apps and the developer experience around apps.
+
+.The Heroku Platform uses containers (aka Dynos) to run and scale all Heroku apps.
+
+.Dynos are isolated, virtulized Linux contaners that are designed to execute code based o>
+
+
+HEROKU CLI
+-----------
+
+.The Heroku Command Line Interface (CLI) makes it easy to create and menage your Heroku apps directly from the trminal.
+
+.These are some od CLI commands the we can use:
+	-Heroku create 
+	-Heroku apps
+	-Heroku logs
+	-Heroku destroy
+
+
+

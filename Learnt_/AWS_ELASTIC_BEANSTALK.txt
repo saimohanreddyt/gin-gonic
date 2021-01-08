@@ -1,1 +1,25 @@
 
+
+AWS ELASTIC BEANSTALK
+----------------------
+
+.Developer-friendly platform to deploy and scale web applications
+	-Golang, Node.js, Java, .NET, Python, Ruby, Docker(Single/Multi)
+
+.It handles deployments, capacity provisioning, load balancing, auto-scaling and health monitoring and so forth.
+
+.Paas-like layer on the top of multiple AWS Services
+	-EC2: Create/Terminate Instances, Autoscaling, ELB's, etc
+	-Amazon S3: Application version (zip) and environment configuration
+	-CloudFormation: EB uses CloudFormation behind the scenes creating and applying the infrastucture definition for us.
+	- Other services: CloudWatch, RDS, DynamoDB, SQS, SNS, etc.
+
+. It supports two architecture/application types
+	-web Server:
+		-single instance or
+		-a load balancer and multiple instances "nehind it"
+	-Worker:
+		-SQS queue with a Single instance (consumer) or
+		-multiple instances (consumer)
+.We can use the web console, the SDK or the CLI.
+.Some similar tools are Heroku, Azure App Service and Google App Engine.
